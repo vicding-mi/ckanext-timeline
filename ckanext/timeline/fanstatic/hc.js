@@ -370,12 +370,18 @@ $(function () {
         }
 
         /** Update points for graph */
-        if (old_p) {
-            points = points.filter(function (x) { return x[0] != old_p; });
+        if (typeof old_p !== 'undefined') {
+            if (old_p) {
+                points = points.filter(function (x) { return x[0] != old_p; });
+            }
         }
-        if (new_p) {
-            points.push([new_p, new_p]);
+
+        if (typeof old_p !== 'undefined') {
+            if (new_p) {
+                points.push([new_p, new_p]);
+            }
         }
+        
         points.sort(function (a, b) {
             return a[0] > b[0];
         });
